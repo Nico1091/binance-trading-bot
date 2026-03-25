@@ -53,3 +53,585 @@
 [2026-03-25T19:42:13.259Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
 [2026-03-25T19:42:13.260Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
 [2026-03-25T19:42:15.220Z] SIGINT received - shutting down
+[2026-03-25T19:47:22.884Z] Platform client initialized: binance_live
+[2026-03-25T19:47:22.886Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T19:47:22.887Z] Platform client initialized: binance_live
+[2026-03-25T19:47:22.888Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T19:47:22.942Z] DB initialized and config loaded
+[2026-03-25T19:47:22.944Z] Platform client ready: binance_live
+[2026-03-25T19:47:22.945Z] Auto scheduler started with interval 15s
+[2026-03-25T19:47:22.950Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:47:22.951Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:47:23.365Z] ⏰ Tiempo sincronizado: offset 50033ms
+[2026-03-25T19:47:23.367Z] ⏰ Tiempo sincronizado: offset 50033ms
+[2026-03-25T19:47:23.369Z] ⏰ Tiempo sincronizado: offset 50032ms
+[2026-03-25T19:47:23.664Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:47:23.921Z] ⏰ Tiempo sincronizado: offset 50064ms
+[2026-03-25T19:47:23.923Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 1/5)
+[2026-03-25T19:47:24.972Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T19:47:26.217Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:47:26.477Z] ⏰ Tiempo sincronizado: offset 50058ms
+[2026-03-25T19:47:26.479Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 2/5)
+[2026-03-25T19:47:26.964Z] 📊 Bot iniciado y listo para operar automáticamente
+[2026-03-25T19:47:26.968Z] 🎯 Objetivo diario: 25.0% | Máximo trades: 150
+[2026-03-25T19:47:26.969Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
+[2026-03-25T19:47:26.971Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
+[2026-03-25T19:47:28.762Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:47:29.089Z] ⏰ Tiempo sincronizado: offset 49991ms
+[2026-03-25T19:47:29.092Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 3/5)
+[2026-03-25T19:47:31.444Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:47:31.751Z] ⏰ Tiempo sincronizado: offset 50009ms
+[2026-03-25T19:47:31.752Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 4/5)
+[2026-03-25T19:47:33.142Z] SIGINT received - shutting down
+[2026-03-25T19:48:51.229Z] Platform client initialized: binance_live
+[2026-03-25T19:48:51.231Z] ⚠️ No se encontraron claves API en variables de entorno
+[2026-03-25T19:48:51.246Z] DB initialized and config loaded
+[2026-03-25T19:48:51.248Z] Platform client ready: binance_live
+[2026-03-25T19:48:51.250Z] Auto scheduler started with interval 15s
+[2026-03-25T19:48:51.255Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:48:51.256Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:48:51.257Z] ⚠️ Sin credenciales configuradas - usando estadísticas simuladas
+[2026-03-25T19:48:53.266Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T19:48:54.836Z] SIGINT received - shutting down
+[2026-03-25T19:52:00.006Z] Platform client initialized: binance_live
+[2026-03-25T19:52:00.010Z] ⚠️ No se encontraron claves API en variables de entorno
+[2026-03-25T19:52:00.022Z] DB initialized and config loaded
+[2026-03-25T19:52:00.023Z] Platform client ready: binance_live
+[2026-03-25T19:52:00.028Z] Auto scheduler started with interval 15s
+[2026-03-25T19:52:00.033Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:52:00.034Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:52:00.036Z] ⚠️ Sin credenciales configuradas - usando estadísticas simuladas
+[2026-03-25T19:52:01.469Z] SIGINT received - shutting down
+[2026-03-25T19:53:04.549Z] Platform client initialized: binance_live
+[2026-03-25T19:53:04.551Z] ⚠️ No se encontraron claves API en variables de entorno
+[2026-03-25T19:53:04.566Z] DB initialized and config loaded
+[2026-03-25T19:53:04.567Z] Platform client ready: binance_live
+[2026-03-25T19:53:04.570Z] Auto scheduler started with interval 15s
+[2026-03-25T19:53:04.577Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:53:04.578Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:53:04.580Z] ⚠️ Sin credenciales configuradas - usando estadísticas simuladas
+[2026-03-25T19:53:06.256Z] SIGINT received - shutting down
+[2026-03-25T19:53:13.655Z] Platform client initialized: binance_live
+[2026-03-25T19:53:13.657Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T19:53:13.658Z] Platform client initialized: binance_live
+[2026-03-25T19:53:13.659Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T19:53:13.714Z] DB initialized and config loaded
+[2026-03-25T19:53:13.715Z] Platform client ready: binance_live
+[2026-03-25T19:53:13.717Z] Auto scheduler started with interval 15s
+[2026-03-25T19:53:13.721Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:53:13.722Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:53:14.079Z] ⏰ Tiempo sincronizado: offset 50048ms
+[2026-03-25T19:53:14.081Z] ⏰ Tiempo sincronizado: offset 50048ms
+[2026-03-25T19:53:14.083Z] ⏰ Tiempo sincronizado: offset 50054ms
+[2026-03-25T19:53:14.330Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:53:14.584Z] ⏰ Tiempo sincronizado: offset 50064ms
+[2026-03-25T19:53:14.587Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 1/5)
+[2026-03-25T19:53:15.671Z] SIGINT received - shutting down
+[2026-03-25T19:58:30.959Z] Platform client initialized: binance_live
+[2026-03-25T19:58:30.961Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T19:58:30.962Z] Platform client initialized: binance_live
+[2026-03-25T19:58:30.963Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T19:58:31.012Z] DB initialized and config loaded
+[2026-03-25T19:58:31.013Z] Platform client ready: binance_live
+[2026-03-25T19:58:31.017Z] Auto scheduler started with interval 15s
+[2026-03-25T19:58:31.023Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:58:31.023Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:58:31.417Z] ⏰ Tiempo sincronizado: offset 50040ms
+[2026-03-25T19:58:31.421Z] ⏰ Tiempo sincronizado: offset 50040ms
+[2026-03-25T19:58:31.424Z] ⏰ Tiempo sincronizado: offset 50043ms
+[2026-03-25T19:58:31.716Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T19:58:32.024Z] ⏰ Tiempo sincronizado: offset 50009ms
+[2026-03-25T19:58:32.026Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 1/5)
+[2026-03-25T19:58:33.039Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T19:58:33.383Z] SIGINT received - shutting down
+[2026-03-25T20:01:32.349Z] Platform client initialized: binance_live
+[2026-03-25T20:01:32.351Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T20:01:32.352Z] Platform client initialized: binance_live
+[2026-03-25T20:01:32.353Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T20:01:32.414Z] DB initialized and config loaded
+[2026-03-25T20:01:32.416Z] Platform client ready: binance_live
+[2026-03-25T20:01:32.419Z] Auto scheduler started with interval 15s
+[2026-03-25T20:01:32.423Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T20:01:32.425Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T20:01:32.764Z] ⏰ Tiempo sincronizado: offset 50056ms
+[2026-03-25T20:01:32.766Z] ⏰ Tiempo sincronizado: offset 50056ms
+[2026-03-25T20:01:32.777Z] ⏰ Tiempo sincronizado: offset 50059ms
+[2026-03-25T20:01:33.033Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T20:01:33.375Z] ⏰ Tiempo sincronizado: offset 49979ms
+[2026-03-25T20:01:33.376Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 1/5)
+[2026-03-25T20:01:34.118Z] SIGINT received - shutting down
+[2026-03-25T20:05:42.609Z] Platform client initialized: binance_live
+[2026-03-25T20:05:42.611Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T20:05:42.613Z] Platform client initialized: binance_live
+[2026-03-25T20:05:42.613Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T20:05:42.668Z] DB initialized and config loaded
+[2026-03-25T20:05:42.669Z] Platform client ready: binance_live
+[2026-03-25T20:05:42.671Z] Auto scheduler started with interval 15s
+[2026-03-25T20:05:42.676Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T20:05:42.677Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T20:05:43.028Z] ⏰ Tiempo sincronizado: offset 50054ms
+[2026-03-25T20:05:43.030Z] ⏰ Tiempo sincronizado: offset 50054ms
+[2026-03-25T20:05:43.055Z] ⏰ Tiempo sincronizado: offset 50053ms
+[2026-03-25T20:05:43.334Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T20:05:43.607Z] ⏰ Tiempo sincronizado: offset 50052ms
+[2026-03-25T20:05:43.610Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 1/5)
+[2026-03-25T20:05:44.687Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T20:05:45.888Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T20:05:46.143Z] ⏰ Tiempo sincronizado: offset 50069ms
+[2026-03-25T20:05:46.144Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 2/5)
+[2026-03-25T20:05:46.688Z] 📊 Bot iniciado y listo para operar automáticamente
+[2026-03-25T20:05:46.692Z] 🎯 Objetivo diario: 25.0% | Máximo trades: 150
+[2026-03-25T20:05:46.694Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
+[2026-03-25T20:05:46.696Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
+[2026-03-25T20:05:48.452Z] 🔄 Error de timestamp detectado, forzando resincronización...
+[2026-03-25T20:05:48.770Z] ⏰ Tiempo sincronizado: offset 50007ms
+[2026-03-25T20:05:48.772Z] Retrying account (timestamp error) after error: Timestamp for this request is outside of the recvWindow. (attempt 3/5)
+[2026-03-25T20:05:49.373Z] SIGINT received - shutting down
+[2026-03-25T20:10:15.235Z] Platform client initialized: binance_live
+[2026-03-25T20:10:15.237Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T20:10:15.239Z] Platform client initialized: binance_live
+[2026-03-25T20:10:15.240Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T20:10:15.296Z] DB initialized and config loaded
+[2026-03-25T20:10:15.297Z] Platform client ready: binance_live
+[2026-03-25T20:10:15.299Z] Auto scheduler started with interval 15s
+[2026-03-25T20:10:15.303Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T20:10:15.304Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T20:10:15.742Z] ⏰ Tiempo sincronizado: offset -220ms (preciso)
+[2026-03-25T20:10:15.749Z] ⏰ Tiempo sincronizado: offset -223ms (preciso)
+[2026-03-25T20:10:15.751Z] ⏰ Tiempo sincronizado: offset -223ms
+[2026-03-25T20:10:17.325Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T20:10:19.326Z] 📊 Bot iniciado y listo para operar automáticamente
+[2026-03-25T20:10:19.330Z] 🎯 Objetivo diario: 25.0% | Máximo trades: 150
+[2026-03-25T20:10:19.333Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
+[2026-03-25T20:10:19.336Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
+[2026-03-25T20:10:48.514Z] SIGINT received - shutting down
+[2026-03-25T20:11:39.188Z] Platform client initialized: binance_live
+[2026-03-25T20:11:39.190Z] 🔑 Claves API cargadas desde variables de entorno
+[2026-03-25T20:11:39.192Z] Platform client initialized: binance_live
+[2026-03-25T20:11:39.193Z] ⏰ Sincronizando tiempo con servidores Binance...
+[2026-03-25T20:11:39.246Z] DB initialized and config loaded
+[2026-03-25T20:11:39.248Z] Platform client ready: binance_live
+[2026-03-25T20:11:39.249Z] Auto scheduler started with interval 15s
+[2026-03-25T20:11:39.254Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T20:11:39.255Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T20:11:39.707Z] ⏰ Tiempo sincronizado: offset -194ms (preciso)
+[2026-03-25T20:11:39.709Z] ⏰ Tiempo sincronizado: offset -194ms
+[2026-03-25T20:11:39.713Z] ⏰ Tiempo sincronizado: offset -197ms (preciso)
+[2026-03-25T20:11:41.263Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T20:11:43.271Z] 📊 Bot iniciado y listo para operar automáticamente
+[2026-03-25T20:11:43.273Z] 🎯 Objetivo diario: 25.0% | Máximo trades: 150
+[2026-03-25T20:11:43.275Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
+[2026-03-25T20:11:43.277Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
+[2026-03-25T20:11:52.964Z] Auto scheduler started with interval 15s
+[2026-03-25T20:12:08.589Z] 📊 BTCUSDT: Price=70756.23 | RSI=43.2 | MACD=-0.356320 | Trend=BEARISH | Vol=NORMAL
+[2026-03-25T20:12:08.598Z] 🔍 No hay señales de trading válidas en este ciclo

@@ -232,7 +232,10 @@ class PlatformManager {
     // Solución simple: aumentar recvWindow y sincronizar antes de cada llamada
     // El offset se aplicará automáticamente en ensureTimeSync()
     
-    const wrap = (name, fn) => (...args) => this.withRetry(() => fn(...args), name);
+    const wrap = (name, fn) => async (...args) => {
+      await this.ensureTimeSync();
+      return this.withRetry(() => fn(...args), name);
+    };
 
     return {
       exchangeInfo: wrap('exchangeInfo', () => spot.exchangeInfo()),

@@ -1,0 +1,31 @@
+# Environment variables
+.env
+process.env
+
+# Logs
+*.log
+trader.log
+trader.log.txt
+
+# Database
+*.sqlite
+*.db
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package manager files
+package-lock.json
+yarn.lock

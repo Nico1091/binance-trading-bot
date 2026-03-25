@@ -15,7 +15,7 @@
  * Luego: node bot.js
  */
 
-require('dotenv').config();
+require('dotenv').config({ path: './process.env' });
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -53,7 +53,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'carpeta')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'carpeta', 'index.html'));
+  res.sendFile(path.join(__dirname,  'index.html'));
 });
 
 let platformManager = new PlatformManager({ logger: logFile, platform: 'binance_live', apiKey: API_KEY, apiSecret: API_SECRET });
@@ -1157,8 +1157,31 @@ let schedulerHandle = null;
 let schedulerMetrics = { lastEvalAt: 0, lastEvalDurationMs: 0, evalErrors: 0 };
 function startAutoScheduler() {
   if (schedulerHandle) clearInterval(schedulerHandle);
-  schedulerHandle = setInterval(() => {
-    if (AUTO_TRADE) evaluateAndAct().catch(e => logFile('evaluateAndAct crash: ' + e));
+  schedulerHandle = setInterval(async () => {
+    if (AUTO_TRADE) {
+      try {
+        await evaluateAndAct();
+      } catch (e) {
+        const errorMsg = `evaluateAndAct error: ${e?.message || e}`;
+        logFile(`❌ ${errorMsg}`);
+        
+        // Si es un error de timestamp, intentar resincronizar y esperar
+        if (errorMsg.includes('timestamp') || errorMsg.includes('recvWindow')) {
+          logFile('🔄 Detectado error de tiempo - resincronizando...');
+          try {
+            await platformManager.syncTime();
+            logFile('✅ Tiempo resincronizado - reintentando en 5 segundos...');
+            await new Promise(resolve => setTimeout(resolve, 5000));
+          } catch (syncErr) {
+            logFile(`❌ Error resincronizando: ${syncErr.message}`);
+          }
+        } else {
+          // Para otros errores, esperar 5 segundos antes de continuar
+          logFile('⏳ Esperando 5 segundos antes de continuar...');
+          await new Promise(resolve => setTimeout(resolve, 5000));
+        }
+      }
+    }
   }, (config.AUTO_INTERVAL_SEC || defaultConfig.AUTO_INTERVAL_SEC) * 1000);
   logFile(`Auto scheduler started with interval ${config.AUTO_INTERVAL_SEC || defaultConfig.AUTO_INTERVAL_SEC}s`);
 }
