@@ -1,0 +1,55 @@
+[2026-03-25T19:42:09.209Z] Platform client initialized: binance_live
+[2026-03-25T19:42:09.212Z] ⚠️ No se encontraron claves API en variables de entorno
+[2026-03-25T19:42:09.224Z] DB initialized and config loaded
+[2026-03-25T19:42:09.226Z] Platform client ready: binance_live
+[2026-03-25T19:42:09.233Z] Auto scheduler started with interval 15s
+[2026-03-25T19:42:09.244Z] ✅ Dashboard & AutoTrader running on http://localhost:3000
+[2026-03-25T19:42:09.246Z] ⚙️ Configuración: {
+  "SYMBOL": "BTCUSDT",
+  "INTERVAL": "1m",
+  "RISK_PERCENT": 0.08,
+  "ATR_MULTIPLIER": 2,
+  "TAKE_PROFIT_MULTIPLIER": 3,
+  "MIN_USDT_TO_TRADE": 5,
+  "AUTO_INTERVAL_SEC": 15,
+  "MAX_OPEN_POSITIONS": 5,
+  "COMMISSION_PCT": 0.001,
+  "SLIPPAGE_PCT": 0.001,
+  "MAX_HOLD_TIME_MS": 3600000,
+  "EARLY_EXIT_ENABLE": false,
+  "MIN_HOLD_TIME_MS": 300000,
+  "EARLY_EXIT_MIN_PROFIT": 0.003,
+  "EARLY_EXIT_MAX_LOSS": -0.01,
+  "TRAILING_STOP_ENABLE": true,
+  "TRAILING_STOP_ATR_MULT": 0.5,
+  "ENABLE_SCALPING": true,
+  "ENABLE_SWING_TRADING": true,
+  "ENABLE_BREAKOUT_TRADING": true,
+  "ENABLE_MOMENTUM_TRADING": true,
+  "ENABLE_MEAN_REVERSION": true,
+  "ENABLE_TREND_FOLLOWING": true,
+  "VOLUME_THRESHOLD": 1.1,
+  "RSI_OVERSOLD": 25,
+  "RSI_OVERBOUGHT": 75,
+  "RSI_NEUTRAL_LOW": 45,
+  "RSI_NEUTRAL_HIGH": 55,
+  "MACD_SIGNAL_THRESHOLD": 0.00001,
+  "BOLLINGER_PERIOD": 20,
+  "BOLLINGER_STD": 2,
+  "TREND_CONFIRMATION_CANDLES": 2,
+  "MAX_DAILY_TRADES": 150,
+  "PROFIT_TARGET_DAILY": 0.25,
+  "MAX_DRAWDOWN": 0.2,
+  "MOMENTUM_PERIOD": 10,
+  "MEAN_REVERSION_PERIOD": 14,
+  "TREND_PERIOD": 20,
+  "VOLATILITY_THRESHOLD": 0.01,
+  "PRICE_CHANGE_THRESHOLD": 0.005
+}
+[2026-03-25T19:42:09.249Z] ⚠️ Sin credenciales configuradas - usando estadísticas simuladas
+[2026-03-25T19:42:11.256Z] 🧪 Log de prueba - Sistema SSE funcionando correctamente
+[2026-03-25T19:42:13.256Z] 📊 Bot iniciado y listo para operar automáticamente
+[2026-03-25T19:42:13.258Z] 🎯 Objetivo diario: 25.0% | Máximo trades: 150
+[2026-03-25T19:42:13.259Z] 📈 Estrategias activas: Scalping Swing Breakout Momentum MeanReversion TrendFollowing
+[2026-03-25T19:42:13.260Z] ⚙️ Umbrales: RSI 25-75 | Volumen 1.1x | MACD 0.00001
+[2026-03-25T19:42:15.220Z] SIGINT received - shutting down

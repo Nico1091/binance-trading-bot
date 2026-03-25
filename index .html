@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>🤖 Trading Bot Multi-Platform Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0d1117;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #161b22;
+      padding: 20px;
+      text-align: center;
+      color: #00ffcc;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    input,
+    select,
+    button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00e6b8;
+    }
+
+    #balances div,
+    #ordenes div {
+      margin-bottom: 6px;
+    }
+
+    .order-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #171a1f;
+      border: 1px solid #232a33;
+    }
+
+    .order-info {
+      font-size: 13px;
+      color: #cfd8dc;
+    }
+
+    .order-actions button {
+      width: auto;
+      padding: 6px 10px;
+    }
+
+    .total-usdt {
+      font-weight: bold;
+      color: #ffcc00;
+      margin-top: 10px;
+    }
+
+    #logs {
+      font-size: 13px;
+      background: #111;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      border-radius: 8px;
+    }
+
+    /* Sección de ayuda */
+    .help {
+      background: #161b22;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    .help p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .highlight {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .row button {
+      width: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>💹 Trading Bot Multi-Platform Dashboard</h1>
+    <div class="subtitle">Controla balances, órdenes y observa cómo el bot ejecuta estrategias automáticamente</div>
+  </header>
+
+  <div class="layout">
+
+    <!-- 📈 Gráfica oficial en grande -->
+    <div class="card" style="grid-column: span 2;">
+      <h2>📊 Gráfica BTC/USDT en vivo (TradingView)</h2>
+      <div id="binance-widget" style="height:600px;"></div>
+    </div>
+
+    <div class="card" style="grid-column: span 2;">
+      <h2>🔌 Conexión y Plataforma</h2>
+      <div class="row">
+        <label for="platformSelect" style="min-width:160px">Plataforma</label>
+        <select id="platformSelect">
+          <option value="binance_live" selected>Binance (Live)</option>
+          <option value="binance_testnet">Binance Testnet</option>
+          <option value="mt5">MetaTrader 5 (MT5)</option>
+        </select>
+        <button id="btnApplyPlatform">Aplicar</button>
+      </div>
+      <div id="apiKeysSection" class="row" style="display:none;">
+        <input type="password" id="apiKey" placeholder="Binance API Key">
+        <input type="password" id="apiSecret" placeholder="Binance API Secret">
+        <label style="display:flex;align-items:center;gap:6px;"><input type="checkbox" id="persistKeys">Guardar en servidor</label>
+        <button id="btnSaveKeys">Guardar Claves</button>
+      </div>
+      <div class="row">
+        <button id="btnToggleApiKeys" style="background:#ff6b6b;">🔑 Mostrar Claves API</button>
+      </div>
+      <div id="platformStatus" style="font-size:13px; color:#ccc; margin-top:8px; white-space:pre-line;"></div>
+    </div>
+
+    <!-- 💰 Balance -->
+    <div class="card">
+      <h2>💰 Balance (solo USDT y relevantes)</h2>
+      <select id="assetSelect"></select>
+      <div class="total-usdt" id="totalUSDT"></div>
+    </div>
+
+    <!-- 📊 Órdenes abiertas -->
+    <div class="card">
+      
+      <div id="ordenes"></div>
+    </div>
+
+    <!-- ⚙️ AutoTrade control -->
+    <div class="card">
+      <h2>⚙️ AutoTrade</h2>
+      <div>Estado: <span id="autoStatus">Desconocido</span></div>
+      <div class="row" style="margin-top:10px;">
+        <button id="btnAutoStart">Iniciar</button>
+        <button id="btnAutoStop">Detener</button>
+      </div>
+    </div>
+
+    <!-- 📂 Posiciones abiertas -->
+    <div class="card">
+      <h2>📂 Posiciones abiertas</h2>
+      <div id="posiciones"></div>
+    </div>
+
+    <!-- 🛒 Crear orden manual -->
+    <div class="card">
+      <h2>🛒 Crear Orden Manual</h2>
+      <form id="formOrden">
+        <input name="symbol" placeholder="Símbolo (ej: BTCUSDT)" value="BTCUSDT" required>
+        <select name="side" required>
+          <option value="BUY">Comprar</option>
+          <option value="SELL">Vender</option>
+        </select>
+        <select name="type" id="orderType" required>
+          <option value="MARKET">Market</option>
+          <option value="LIMIT">Limit</option>
+        </select>
+        <input type="number" name="quantity" step="any" placeholder="Cantidad" required>
+        <input type="number" name="price" id="priceInput" step="any" placeholder="Precio (solo LIMIT)" disabled>
+        <button>Enviar Orden</button>
+      </form>
+      <div style="font-size:12px;color:#aaa;margin-top:6px;">
+        Nota: En MARKET BUY, la cantidad se interpreta en cripto y el backend calcula el equivalente en USDT con el precio actual.
+      </div>
+    </div>
+
+    <!-- 🧠 Logs del bot -->
+    <div class="card" style="grid-column: span 2;">
+      <h2>🧠 Logs en tiempo real del Bot <span id="sseStatus" style="font-size:12px;color:#aaa;margin-left:8px;">(conectando...)</span></h2>
+      <div id="logs">Esperando actividad del bot...</div>
+    </div>
+
+    <!-- ℹ️ Ayuda -->
+    <div class="card help" style="grid-column: span 2;">
+      <h2>ℹ️ ¿Cómo funciona este bot?</h2>
+      <p>Este dashboard se conecta al <span class="highlight">backend Node.js</span>, el cual usa la <span
+          class="highlight">API de Binance Live</span>.
+        El backend obtiene balances, órdenes y precios en tiempo real, y ejecuta estrategias automáticas de trading.</p>
+      <p>El <span class="highlight">bot</span> analiza velas de 1 minuto (BTC/USDT) aplicando indicadores como RSI,
+        medias móviles y patrones de velas.
+        Cuando se cumplen condiciones específicas, genera órdenes de compra o venta automáticamente.</p>
+      <p>En la sección <span class="highlight">"Logs del bot"</span> verás en tiempo real qué estrategia activó la
+        operación y con qué parámetros.
+        Puedes probar también <span class="highlight">crear órdenes manuales</span> usando el formulario.</p>
+    </div>
+
+  </div>
+
+  <!-- TradingView -->
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+    new TradingView.widget({
+      "width": "100%",
+      "height": 600,
+      "symbol": "BINANCE:BTCUSDT",
+      "interval": "1",
+      "timezone": "Etc/UTC",
+      "theme": "dark",
+      "style": "1",
+      "locale": "es",
+      "toolbar_bg": "#1f1f1f",
+      "enable_publishing": false,
+      "hide_top_toolbar": false,
+      "save_image": false,
+      "container_id": "binance-widget"
+    });
+  </script>
+
+
+
+  <script>
+    // ===============================
+    // � GESTIÓN DE PLATAFORMA
+    // ===============================
+    
+    // Cargar estado inicial de plataforma
+    async function cargarEstadoPlataforma() {
+      try {
+        const res = await fetch('/platform');
+        const data = await res.json();
+        
+        const platformSelect = document.getElementById('platformSelect');
+        if (platformSelect && data.platform) {
+          platformSelect.value = data.platform;
+        }
+        
+        actualizarEstadoPlataforma(data);
+        
+        // Cargar claves API automáticamente si no están configuradas
+        if (!data.binanceConfigured) {
+          await cargarClavesDesdeBackend();
+        }
+      } catch (err) {
+        console.error('❌ Error cargando estado plataforma:', err);
+      }
+    }
+    
+    // Cargar claves API desde el backend (desde .env)
+    async function cargarClavesDesdeBackend() {
+      try {
+        const res = await fetch('/api/binance/keys');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.apiKey && data.apiSecret) {
+            document.getElementById('apiKey').value = data.apiKey;
+            document.getElementById('apiSecret').value = data.apiSecret;
+            agregarLog('🔑 Claves API cargadas automáticamente desde .env');
+          }
+        }
+      } catch (err) {
+        console.log('ℹ️ No se encontraron claves pre-configuradas');
+      }
+    }
+    
+    // Actualizar UI del estado de plataforma
+    function actualizarEstadoPlataforma(status) {
+      const statusDiv = document.getElementById('platformStatus');
+      const apiKeysSection = document.getElementById('apiKeysSection');
+      const toggleBtn = document.getElementById('btnToggleApiKeys');
+      
+      if (statusDiv) {
+        const configured = status.binanceConfigured || status.mt5Configured;
+        const platform = status.platform || 'unknown';
+        const metrics = status.metrics || {};
+        
+        statusDiv.innerHTML = `
+          <div style="margin-bottom: 8px;">
+            <strong>Plataforma:</strong> ${platform}
+            <span style="color: ${configured ? '#00ffcc' : '#ff5555'}; margin-left: 10px;">
+              ${configured ? '✅ Configurada' : '❌ No configurada'}
+            </span>
+          </div>
+          <div style="font-size: 12px; color: #aaa;">
+            <strong>Métricas:</strong> Llamadas: ${metrics.calls || 0} | 
+            Fallos: ${metrics.failures || 0} | 
+            Latencia: ${metrics.avgLatencyMs || 0}ms
+          </div>
+          ${metrics.lastError ? `<div style="color: #ff5555; font-size: 11px; margin-top: 4px;"><strong>Último error:</strong> ${metrics.lastError}</div>` : ''}
+        `;
+        
+        // Si ya está configurado, ocultar campos de claves
+        if (configured) {
+          apiKeysSection.style.display = 'none';
+          toggleBtn.textContent = '🔑 Mostrar Claves API';
+          toggleBtn.style.background = '#ff6b6b';
+        } else {
+          apiKeysSection.style.display = 'flex';
+          toggleBtn.textContent = '🔑 Ocultar Claves API';
+          toggleBtn.style.background = '#4CAF50';
+        }
+      }
+    }
+    
+    // Toggle para mostrar/ocultar campos de claves
+    document.getElementById('btnToggleApiKeys').addEventListener('click', () => {
+      const apiKeysSection = document.getElementById('apiKeysSection');
+      const toggleBtn = document.getElementById('btnToggleApiKeys');
+      
+      if (apiKeysSection.style.display === 'none') {
+        apiKeysSection.style.display = 'flex';
+        toggleBtn.textContent = '🔑 Ocultar Claves API';
+        toggleBtn.style.background = '#4CAF50';
+      } else {
+        apiKeysSection.style.display = 'none';
+        toggleBtn.textContent = '🔑 Mostrar Claves API';
+        toggleBtn.style.background = '#ff6b6b';
+      }
+    });
+    
+    // Aplicar cambio de plataforma
+    document.getElementById('btnApplyPlatform').addEventListener('click', async () => {
+      const platformSelect = document.getElementById('platformSelect');
+      const selectedPlatform = platformSelect.value;
+      
+      try {
+        const btn = document.getElementById('btnApplyPlatform');
+        btn.disabled = true;
+        btn.textContent = 'Aplicando...';
+        
+        const res = await fetch('/platform', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ platform: selectedPlatform })
+        });
+        
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error cambiando plataforma');
+        
+        agregarLog(`🔌 Plataforma cambiada a: ${selectedPlatform}`);
+        actualizarEstadoPlataforma(data.status);
+        actualizarEstado(); // Refrescar todo el estado
+        
+      } catch (err) {
+        console.error('❌ Error cambiando plataforma:', err);
+        agregarLog('❌ Error cambiando plataforma: ' + (err.message || err));
+      } finally {
+        const btn = document.getElementById('btnApplyPlatform');
+        btn.disabled = false;
+        btn.textContent = 'Aplicar';
+      }
+    });
+    
+    // Guardar claves API
+    document.getElementById('btnSaveKeys').addEventListener('click', async () => {
+      const apiKey = document.getElementById('apiKey').value.trim();
+      const apiSecret = document.getElementById('apiSecret').value.trim();
+      const persist = document.getElementById('persistKeys').checked;
+      
+      if (!apiKey || !apiSecret) {
+        alert('Por favor ingresa tanto la API Key como el API Secret');
+        return;
+      }
+      
+      try {
+        const btn = document.getElementById('btnSaveKeys');
+        btn.disabled = true;
+        btn.textContent = 'Guardando...';
+        
+        const res = await fetch('/api/binance', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ apiKey, apiSecret, persist })
+        });
+        
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error guardando claves');
+        
+        agregarLog(`🔑 Claves API ${persist ? 'guardadas' : 'actualizadas temporalmente'}`);
+        actualizarEstadoPlataforma(data.status);
+        actualizarEstado();
+        
+        if (!persist) {
+          document.getElementById('apiKey').value = '';
+          document.getElementById('apiSecret').value = '';
+        }
+        
+      } catch (err) {
+        console.error('❌ Error guardando claves:', err);
+        agregarLog('❌ Error guardando claves: ' + (err.message || err));
+        alert('Error guardando claves: ' + (err.message || err));
+      } finally {
+        const btn = document.getElementById('btnSaveKeys');
+        btn.disabled = false;
+        btn.textContent = 'Guardar Claves';
+      }
+    });
+
+    // ===============================
+    // � ACTUALIZAR ESTADO
+    // ===============================
+    async function actualizarEstado() {
+      try {
+        const res = await fetch('/estado');
+        const data = await res.json();
+
+        // BALANCES
+        const assetSelect = document.getElementById('assetSelect');
+        assetSelect.innerHTML = '';
+        let totalUSDT = 0;
+        (data.balances || []).forEach(b => {
+          const free = parseFloat(b.free || 0);
+          const locked = parseFloat(b.locked || 0);
+          if (free > 0 || locked > 0) {
+            const option = document.createElement('option');
+            option.value = b.asset;
+            option.text = `${b.asset}: ${free} libres, ${locked} en orden`;
+            assetSelect.appendChild(option);
+            if (b.asset === 'USDT') totalUSDT = free + locked;
+          }
+        });
+        document.getElementById('totalUSDT').innerText = `💲 Total USDT: ${totalUSDT}`;
+
+        // ÓRDENES
+        const ordenesDiv = document.getElementById('ordenes');
+        ordenesDiv.innerHTML = '';
+        const openOrders = data.openOrders || [];
+        if (openOrders.length === 0) {
+          ordenesDiv.innerHTML = 'Bienvenido Gracias por comprar el bot';
+        } else {
+          const frag = document.createDocumentFragment();
+          openOrders.forEach(o => {
+            const row = document.createElement('div');
+            row.className = 'order-row';
+            const info = document.createElement('div');
+            info.className = 'order-info';
+            const ts = o.time ? new Date(o.time).toLocaleString() : '';
+            const price = Number(o.price);
+            const qty = Number(o.origQty);
+            info.textContent = `${o.symbol} | ${o.side} ${o.type} | ${qty.toFixed(8)} @ ${price.toFixed(8)} | ${o.status} | ${ts} | ID: ${o.orderId}`;
+            const actions = document.createElement('div');
+            actions.className = 'order-actions';
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn-cancel';
+            btn.dataset.symbol = o.symbol;
+            btn.dataset.orderid = String(o.orderId);
+            btn.textContent = 'Cancelar';
+            if (o.status && o.status !== 'NEW' && o.status !== 'PARTIALLY_FILLED') {
+              btn.disabled = true;
+            }
+            actions.appendChild(btn);
+            row.appendChild(info);
+            row.appendChild(actions);
+            frag.appendChild(row);
+          });
+          ordenesDiv.appendChild(frag);
+        }
+
+        // AUTO status
+        const autoStatusEl = document.getElementById('autoStatus');
+        if (autoStatusEl) autoStatusEl.innerText = data.auto ? 'Activo' : 'Detenido';
+
+        // POSICIONES
+        const posDiv = document.getElementById('posiciones');
+        if (posDiv) {
+          posDiv.innerHTML = '';
+          const positions = data.positions || [];
+          if (positions.length === 0) {
+            posDiv.innerHTML = '<div>No hay posiciones abiertas</div>';
+          } else {
+            positions.forEach(p => {
+              const opened = p.openedAt ? new Date(p.openedAt).toLocaleString() : '';
+              posDiv.innerHTML += `<div>#${p.id} ${p.symbol} | qty: ${Number(p.qty).toFixed(6)} | entry: ${Number(p.entryPrice).toFixed(2)} | SL: ${Number(p.stopLoss).toFixed(2)} | TP: ${Number(p.takeProfit).toFixed(2)} | ${opened}</div>`;
+            });
+          }
+        }
+      } catch (err) {
+        console.error('❌ Error actualizando estado:', err);
+      }
+    }
+
+    // ===============================
+    // 🛒 ENVIAR ORDEN MANUALe
+    // ===============================
+    document.getElementById('formOrden').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button');
+      try {
+        if (btn) btn.disabled = true;
+        const formData = new FormData(form);
+        const orderType = (formData.get('type') || 'MARKET').toString().toUpperCase();
+        const priceValue = formData.get('price');
+        const symbol = (formData.get('symbol') || '').toString().toUpperCase().trim();
+        const side = (formData.get('side') || '').toString().toUpperCase().trim();
+        const quantity = parseFloat(formData.get('quantity'));
+
+        if (!symbol || !side || !Number.isFinite(quantity) || quantity <= 0) {
+          agregarLog('❌ Datos inválidos en el formulario');
+          return;
+        }
+
+        const body = { symbol, side, type: orderType, quantity };
+        if (orderType === 'LIMIT') {
+          if (!priceValue || !Number.isFinite(parseFloat(priceValue)) || parseFloat(priceValue) <= 0) {
+            agregarLog('❌ Precio inválido para orden LIMIT');
+            return;
+          }
+          body.price = parseFloat(priceValue);
+        }
+
+        const res = await fetch('/orden', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error desconocido');
+        agregarLog('✅ Orden manual enviada: ' + JSON.stringify(data));
+        actualizarEstado();
+      } catch (err) {
+        console.error('❌ Error enviando orden:', err);
+        agregarLog('❌ Error enviando orden manual: ' + (err.message || err));
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+
+    // ===============================
+    // 🧠 LOGS EN TIEMPO REAL
+    // ===============================
+    function agregarLog(mensaje) {
+      const logsDiv = document.getElementById('logs');
+      const now = new Date().toLocaleTimeString();
+      logsDiv.innerHTML += `[${now}] ${mensaje}<br>`;
+      logsDiv.scrollTop = logsDiv.scrollHeight;
+    }
+
+    // Conexión SSE para recibir logs del backend
+    let evtSource = null;
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 5;
+    
+    function connectSSE() {
+      if (evtSource) {
+        evtSource.close();
+      }
+      
+      console.log('Intentando conectar SSE...');
+      evtSource = new EventSource('/logs');
+      
+      evtSource.onopen = function(e) {
+        console.log('✅ SSE connection opened successfully');
+        agregarLog('🔗 Conectado a logs en tiempo real');
+        reconnectAttempts = 0; // Reset counter on successful connection
+        const sseEl = document.getElementById('sseStatus');
+        if (sseEl) {
+          sseEl.textContent = '(conectado)';
+          sseEl.style.color = '#00ffcc';
+        }
+      };
+      
+      evtSource.onmessage = function (e) {
+        try {
+          const data = JSON.parse(e.data);
+          agregarLog(data.message);
+        } catch (err) {
+          console.error('Error parsing SSE data:', err);
+          agregarLog('❌ Error parsing log data: ' + e.data);
+        }
+      };
+      
+      evtSource.onerror = function(e) {
+        console.error('❌ SSE error:', e);
+        reconnectAttempts++;
+
+        const sseEl = document.getElementById('sseStatus');
+        if (sseEl) {
+          sseEl.textContent = reconnectAttempts <= maxReconnectAttempts ? '(reintentando...)' : '(desconectado)';
+          sseEl.style.color = reconnectAttempts <= maxReconnectAttempts ? '#ffcc00' : '#ff5555';
+        }
+        
+        if (reconnectAttempts <= maxReconnectAttempts) {
+          agregarLog(`❌ Error de conexión SSE (intento ${reconnectAttempts}/${maxReconnectAttempts}), reintentando en 3 segundos...`);
+          setTimeout(connectSSE, 3000);
+        } else {
+          agregarLog('❌ Máximo número de intentos de reconexión alcanzado. Por favor, recarga la página.');
+        }
+      };
+    }
+    
+    // Inicialización automática al cargar la página
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Cargar estado inicial de plataforma
+      await cargarEstadoPlataforma();
+      
+      // Actualizar estado general
+      await actualizarEstado();
+      
+      // Configurar auto-refresh
+      setInterval(actualizarEstado, 30000); // Cada 30 segundos
+      
+      // Iniciar conexión SSE
+      connectSSE();
+      
+      agregarLog('🚀 Dashboard inicializado correctamente');
+    });
+    
+    // Listeners para AutoTrade
+    const btnAutoStart = document.getElementById('btnAutoStart');
+    const btnAutoStop = document.getElementById('btnAutoStop');
+    async function setAutoTrade(start) {
+      const endpoint = start ? '/autotrade/start' : '/autotrade/stop';
+      try {
+        const res = await fetch(endpoint, { method: 'POST' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error');
+        const autoEl = document.getElementById('autoStatus');
+        if (autoEl) autoEl.innerText = data.auto ? 'Activo' : 'Detenido';
+        agregarLog(start ? '▶️ AutoTrade iniciado' : '⏹️ AutoTrade detenido');
+      } catch (err) {
+        agregarLog('❌ Error cambiando AutoTrade: ' + (err.message || err));
+      }
+    }
+    if (btnAutoStart) btnAutoStart.addEventListener('click', () => setAutoTrade(true));
+    if (btnAutoStop) btnAutoStop.addEventListener('click', () => setAutoTrade(false));
+
+    // Delegación para cancelar órdenes
+    document.getElementById('ordenes').addEventListener('click', async (e) => {
+      const btn = e.target.closest('button.btn-cancel');
+      if (!btn || btn.disabled) return;
+      const symbol = btn.getAttribute('data-symbol');
+      const orderId = btn.getAttribute('data-orderid');
+      btn.disabled = true;
+      try {
+        const res = await fetch('/orders/cancel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ symbol, orderId: Number(orderId) })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || 'Error cancelando orden');
+        agregarLog(`🛑 Orden cancelada: ${symbol} ID ${orderId}`);
+        actualizarEstado();
+      } catch (err) {
+        agregarLog('❌ Error cancelando orden: ' + (err.message || err));
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    // Toggle de precio por tipo de orden
+    const orderTypeSelect = document.getElementById('orderType');
+    const priceInput = document.getElementById('priceInput');
+    function togglePrice() {
+      if (!orderTypeSelect || !priceInput) return;
+      const isLimit = orderTypeSelect.value === 'LIMIT';
+      priceInput.disabled = !isLimit;
+      priceInput.placeholder = isLimit ? 'Precio (solo LIMIT)' : 'Precio (no aplica)';
+    }
+    if (orderTypeSelect) {
+      orderTypeSelect.addEventListener('change', togglePrice);
+      togglePrice();
+    }
+
+    // ===============================
+    // AUTO REFRESH
+    // ===============================
+    //
+  </script>
+
+</body>
+
+</html>
